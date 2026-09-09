@@ -1,0 +1,60 @@
+:root {
+  --background: #0E121A;
+  --foreground: #fafafa;
+  --primary: #6366f1;
+  --muted: #a1a1aa;
+  --border: #27272a;
+  --content-width: 1200px;
+  --page-gutter: 1rem;
+  --footer-background: rgba(82, 82, 91, 0.7);
+  --footer-border: rgba(161, 161, 170, 0.3);
+  --footer-text: rgba(212, 212, 216, 0.55);
+  --footer-icon: rgba(212, 212, 216, 0.65);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'IBM Plex Mono', monospace, 'Montserrat Variable', sans-serif;
+}
+
+.tech-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  --grid-size: 4rem;
+  background:
+    linear-gradient(rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+    linear-gradient(rgba(148, 163, 184, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.018) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size), var(--grid-size) var(--grid-size), 1rem 1rem, 1rem 1rem;
+}
+
+.tech-background::after {
+  position: absolute;
+  top: var(--grid-size);
+  left: var(--grid-size);
+  content: 'PL\AUR';
+  color: var(--plur-color, rgba(148, 163, 184, 0.1));
+  font-family: monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  line-height: 1em;
+  white-space: pre;
+  text-align: center;
+  transform: translate(-40%, -50%);
+  text-shadow: var(--plur-shadows, none);
+}

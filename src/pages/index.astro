@@ -1,17 +1,212 @@
 ---
+import '@styles/global.css';
+import '@styles/global-light.css';
+import '@styles/navbar.css';
+import '@styles/main/main.css';
+import '@styles/main/about-me.css';
+import '@styles/footer.css';
+import '@fontsource-variable/montserrat/wght.css';
 
 ---
 
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Dev</title>
+		<meta name="description" content="Portfolio personal de Miguel Hdez." />
+		<title>Miguel Hdez | Portfolio</title>
 	</head>
-	<body>
-		<h1>Astro Dev</h1>
+
+
+		<body >
+		<div class="tech-background" aria-hidden="true">
+		</div>
+		<header>
+			<nav>
+				<div class="navMenu">
+					<span class="terminal-line" aria-hidden="true"></span>
+					<svg class="terminal-icon" viewBox="0 0 24 24" aria-hidden="true">
+						<rect x="3" y="4" width="18" height="16" rx="2" />
+						<path d="m7 9 3 3-3 3m5 0h4" />
+					</svg>
+					<a href="#inicio" aria-label="Volver al inicio">mike<span>.</span>dev</a>
+					<ul>
+						<li><a href="#sobre-mi">Sobre mí</a></li>
+						<li><a href="#stack">Stack</a></li>
+						<li><a href="#proyectos">Proyectos</a></li>
+						<li><a href="#colaboracion">Colaboración</a></li>
+						<li><a href="#experiencia">Experiencia</a></li>
+						<li><a href="#contacto">Contacto</a></li>
+					</ul>
+					<div class="nav-controls">
+						<button class="mode-toggle" type="button" aria-label="Cambiar a modo claro">
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<g class="theme-moon">
+									<path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z" />
+								</g>
+								<g class="theme-sun">
+									<circle cx="12" cy="12" r="4" />
+									<path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41" />
+								</g>
+							</svg>
+						</button>
+						<button class="language-toggle" type="button" aria-label="Cambiar idioma, actualmente español">
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<circle cx="12" cy="12" r="9" />
+								<path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9s-1.1 6.6-3.3 9c-2.2-2.4-3.3-5.4-3.3-9S9.8 5.4 12 3Z" />
+							</svg>
+							<span>ES</span>
+						</button>
+					</div>
+				</div>
+			</nav>
+			
+		</header>
+
+		<main>
+			<section id="inicio">
+				<h1>Bienvenido a mi portfolio</h1>
+				<p>Este es un ejemplo de contenido para la página principal.</p>
+			</section>
+			
+		</main>
+
+		<footer>
+			<span class="footer-copy">@ 2024 Miguel Hernandez - Developed in AstroJS</span>
+			<div class="footer-socials" aria-label="Redes sociales">
+				<a href="https://github.com/mikehdez21" target="_blank" rel="noreferrer" aria-label="GitHub">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+					</svg>
+				</a>
+				<a href="https://www.linkedin.com/in/mikehdez21/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V8.999h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.605 0 4.267 2.372 4.267 5.455v6.287zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM3.555 20.452h3.558V8.999H3.555v11.453z" />
+					</svg>
+				</a>
+			</div>
+		</footer>
+
+		<script>
+			const modeToggle = document.querySelector('.mode-toggle');
+			const languageToggle = document.querySelector('.language-toggle');
+
+			modeToggle?.addEventListener('click', () => {
+				const isLight = document.documentElement.dataset.theme === 'light';
+				document.documentElement.dataset.theme = isLight ? 'dark' : 'light';
+				modeToggle.setAttribute('aria-label', isLight ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+				updatePlurGrid?.();
+			});
+
+			languageToggle?.addEventListener('click', () => {
+				const language = languageToggle.querySelector('span');
+				const isSpanish = language?.textContent === 'ES';
+				if (language) language.textContent = isSpanish ? 'EN' : 'ES';
+				languageToggle.setAttribute(
+					'aria-label',
+					`Cambiar idioma, actualmente ${isSpanish ? 'inglés' : 'español'}`,
+				);
+			});
+
+			const techBackground = document.querySelector<HTMLElement>('.tech-background');
+			const updatePlurGrid = () => {
+				if (!techBackground) return;
+				const gridSize = parseFloat(getComputedStyle(document.documentElement).fontSize) * 4;
+				const baseCell = 1;
+				const shadows = [];
+				const gridMarkColor = document.documentElement.dataset.theme === 'light'
+					? 'rgba(63, 63, 70, 0.16)'
+					: 'rgba(148, 163, 184, 0.1)';
+
+				for (let row = baseCell; row * gridSize < window.innerHeight; row += 2) {
+					for (let column = baseCell; column * gridSize < window.innerWidth; column += 2) {
+						if (row === baseCell && column === baseCell) continue;
+						shadows.push(`${(column - baseCell) * gridSize}px ${(row - baseCell) * gridSize}px 0 ${gridMarkColor}`);
+					}
+				}
+
+				techBackground.style.setProperty('--plur-shadows', shadows.join(', '));
+			};
+
+			updatePlurGrid();
+			window.addEventListener('resize', updatePlurGrid);
+
+			const navMenu = document.querySelector('.navMenu');
+			const terminalLine = navMenu?.querySelector<HTMLElement>('.terminal-line');
+			const navLightTargets = navMenu
+				? [...navMenu.querySelectorAll(':scope > .terminal-icon, :scope > a, :scope > ul a, :scope > .nav-controls button svg, :scope > .nav-controls button span')]
+				: [];
+			const lightStartedAt = new WeakMap();
+			const lineDuration = 12000;
+			const linePercent = 0.1;
+
+			const updateNavLight = (time: number) => {
+				if (!navMenu) return;
+				const elapsed = time % lineDuration;
+				const phase = elapsed / lineDuration;
+				const menuWidth = navMenu.getBoundingClientRect().width;
+				const start = 10;
+				const end = menuWidth - 10;
+				const lineWidth = menuWidth * linePercent;
+				let lineStart = start;
+				let currentWidth = 0;
+
+				if (phase >= 0.1 && phase < 0.5) {
+					const progress = (phase - 0.1) / 0.4;
+					const tip = start + (end - start) * progress;
+					if (phase < 0.2) {
+						currentWidth = lineWidth * ((phase - 0.1) / 0.1);
+					} else if (phase >= 0.4) {
+						currentWidth = lineWidth * (1 - ((phase - 0.4) / 0.1));
+					} else {
+						currentWidth = lineWidth;
+					}
+					lineStart = tip - currentWidth;
+				} else if (phase >= 0.6) {
+					const progress = (phase - 0.6) / 0.4;
+					const tip = end - (end - start) * progress;
+					if (phase < 0.7) {
+						currentWidth = lineWidth * ((phase - 0.6) / 0.1);
+					} else if (phase >= 0.9) {
+						currentWidth = lineWidth * (1 - ((phase - 0.9) / 0.1));
+					} else {
+						currentWidth = lineWidth;
+					}
+					lineStart = tip;
+				}
+
+				if (terminalLine) {
+					terminalLine.style.left = `${lineStart}px`;
+					terminalLine.style.width = `${currentWidth}px`;
+				}
+
+				const lineBox = terminalLine?.getBoundingClientRect();
+				const forward = phase >= 0.1 && phase < 0.5;
+				const lineTip = lineBox && currentWidth > 0
+					? (forward ? lineBox.right : lineBox.left)
+					: null;
+				navLightTargets.forEach((target) => {
+					const targetBox = target.getBoundingClientRect();
+					const underTip = lineTip !== null && lineTip >= targetBox.left && lineTip <= targetBox.right;
+					if (!underTip) {
+						lightStartedAt.delete(target);
+						target.classList.remove('nav-lit');
+						return;
+					}
+
+					if (!lightStartedAt.has(target)) lightStartedAt.set(target, time);
+					const illuminated = time - lightStartedAt.get(target) <= 500;
+
+					target.classList.toggle('nav-lit', illuminated);
+				});
+
+				requestAnimationFrame(updateNavLight);
+			};
+
+			requestAnimationFrame((time) => updateNavLight(time));
+		</script>
 	</body>
 </html>

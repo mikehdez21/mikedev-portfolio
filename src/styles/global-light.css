@@ -1,0 +1,64 @@
+:root[data-theme='light'] {
+  --background: #f4f4f5;
+  --foreground: #18181b;
+  --border: #d4d4d8;
+  --footer-background: rgba(255, 255, 255, 0.68);
+  --footer-border: rgba(82, 82, 91, 0.22);
+  --footer-text: rgba(63, 63, 70, 0.65);
+  --footer-icon: rgba(63, 63, 70, 0.75);
+}
+
+:root[data-theme='light'] .tech-background {
+  background:
+    linear-gradient(rgba(63, 63, 70, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(63, 63, 70, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(63, 63, 70, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(63, 63, 70, 0.035) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size), var(--grid-size) var(--grid-size), 1rem 1rem, 1rem 1rem;
+}
+
+:root[data-theme='light'] .tech-background::after {
+  --plur-color: rgba(63, 63, 70, 0.16);
+}
+
+:root[data-theme='light'] .theme-moon {
+  display: none;
+}
+
+:root[data-theme='light'] .theme-sun {
+  display: block;
+}
+
+:root[data-theme='light'] .navMenu {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(82, 82, 91, 0.24);
+}
+
+:root[data-theme='light'] .navMenu > a,
+:root[data-theme='light'] .navMenu > a span,
+:root[data-theme='light'] .mode-toggle,
+:root[data-theme='light'] .language-toggle {
+  color: #27272a;
+  --nav-base-color: #27272a;
+}
+
+:root[data-theme='light'] .navMenu > ul a {
+  color: rgba(39, 39, 42, 0.72);
+  --nav-base-color: rgba(39, 39, 42, 0.72);
+}
+
+:root[data-theme='light'] .navMenu > a:hover,
+:root[data-theme='light'] .navMenu > ul a:hover,
+:root[data-theme='light'] .mode-toggle:hover,
+:root[data-theme='light'] .language-toggle:hover {
+  color: #18181b;
+}
+
+:root[data-theme='light'] .terminal-icon {
+  color: #27272a;
+}
+
+:root[data-theme='light'] main {
+  background: rgba(255, 255, 255, 0.68);
+  border-color: rgba(82, 82, 91, 0.2);
+}

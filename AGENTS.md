@@ -1,12 +1,10 @@
-## Development
+## Portfolio frontend
 
-When starting the dev server, use background mode:
-
-```
-astro dev --background
-```
-
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+- This repository is a personal portfolio built with Astro and a single-page, scroll-based structure.
+- Every frontend change must be responsive from mobile to desktop. Never introduce fixed-width layouts that require horizontal scrolling.
+- Use semantic HTML, accessible labels, visible focus states, and navigation links that work with the page section IDs.
+- Keep the first implementation simple and progressive: prioritize structure and content before adding interactivity or visual effects.
+- Do not run a production build after every change; only build when explicitly requested or when a final verification is needed.
 
 ## Documentation
 
