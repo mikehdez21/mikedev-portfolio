@@ -2,9 +2,11 @@
 
 - This repository is a personal portfolio built with Astro and a single-page, scroll-based structure.
 - Every frontend change must be responsive from mobile to desktop. Never introduce fixed-width layouts that require horizontal scrolling.
+- Always review responsive behavior at mobile, tablet, and desktop widths before considering a frontend change complete.
 - Use semantic HTML, accessible labels, visible focus states, and navigation links that work with the page section IDs.
 - Keep the first implementation simple and progressive: prioritize structure and content before adding interactivity or visual effects.
 - Do not run a production build after every change; only build when explicitly requested or when a final verification is needed.
+- Keep the rules of typescript, don't use any, and avoid disabling eslint rules unless absolutely necessary. If you must disable a rule, add a comment explaining why.
 
 ## Documentation
 

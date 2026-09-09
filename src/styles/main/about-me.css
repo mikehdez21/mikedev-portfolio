@@ -1,1 +1,16 @@
-/* About Me section styles will live here. */
+.about-section {
+  border-top: 1px solid rgba(161, 161, 170, 0.16);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 5vw, 5rem);
+}
+
+@media (max-width: 640px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

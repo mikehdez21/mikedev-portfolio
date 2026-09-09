@@ -47,6 +47,11 @@
   --nav-base-color: rgba(39, 39, 42, 0.72);
 }
 
+:root[data-theme='light'] .navMenu > ul {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(82, 82, 91, 0.22);
+}
+
 :root[data-theme='light'] .navMenu > a:hover,
 :root[data-theme='light'] .navMenu > ul a:hover,
 :root[data-theme='light'] .mode-toggle:hover,

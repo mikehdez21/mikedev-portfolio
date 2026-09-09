@@ -20,20 +20,38 @@ import '@fontsource-variable/montserrat/wght.css';
 		<title>Miguel Hdez | Portfolio</title>
 	</head>
 
-
-		<body >
+	<body>
 		<div class="tech-background" aria-hidden="true">
+			<svg class="grid-racers" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+				<defs>
+					<filter id="racer-glow" x="-50%" y="-50%" width="200%" height="200%">
+						<feGaussianBlur stdDeviation="3" result="blur" />
+						<feMerge>
+							<feMergeNode in="blur" />
+							<feMergeNode in="SourceGraphic" />
+						</feMerge>
+					</filter>
+				</defs>
+				<path class="racer-track racer-track-gold" d="M0 832" />
+				<path class="racer-track racer-track-blue" d="M1440 64" />
+			</svg>
 		</div>
+
 		<header>
 			<nav>
 				<div class="navMenu">
 					<span class="terminal-line" aria-hidden="true"></span>
+					<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="primary-navigation">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M4 7h16M4 12h16M4 17h16" />
+						</svg>
+					</button>
 					<svg class="terminal-icon" viewBox="0 0 24 24" aria-hidden="true">
 						<rect x="3" y="4" width="18" height="16" rx="2" />
 						<path d="m7 9 3 3-3 3m5 0h4" />
 					</svg>
 					<a href="#inicio" aria-label="Volver al inicio">mike<span>.</span>dev</a>
-					<ul>
+					<ul id="primary-navigation">
 						<li><a href="#sobre-mi">Sobre mí</a></li>
 						<li><a href="#stack">Stack</a></li>
 						<li><a href="#proyectos">Proyectos</a></li>
@@ -63,7 +81,6 @@ import '@fontsource-variable/montserrat/wght.css';
 					</div>
 				</div>
 			</nav>
-			
 		</header>
 
 		<main>
@@ -71,7 +88,6 @@ import '@fontsource-variable/montserrat/wght.css';
 				<h1>Bienvenido a mi portfolio</h1>
 				<p>Este es un ejemplo de contenido para la página principal.</p>
 			</section>
-			
 		</main>
 
 		<footer>
@@ -90,123 +106,6 @@ import '@fontsource-variable/montserrat/wght.css';
 			</div>
 		</footer>
 
-		<script>
-			const modeToggle = document.querySelector('.mode-toggle');
-			const languageToggle = document.querySelector('.language-toggle');
-
-			modeToggle?.addEventListener('click', () => {
-				const isLight = document.documentElement.dataset.theme === 'light';
-				document.documentElement.dataset.theme = isLight ? 'dark' : 'light';
-				modeToggle.setAttribute('aria-label', isLight ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
-				updatePlurGrid?.();
-			});
-
-			languageToggle?.addEventListener('click', () => {
-				const language = languageToggle.querySelector('span');
-				const isSpanish = language?.textContent === 'ES';
-				if (language) language.textContent = isSpanish ? 'EN' : 'ES';
-				languageToggle.setAttribute(
-					'aria-label',
-					`Cambiar idioma, actualmente ${isSpanish ? 'inglés' : 'español'}`,
-				);
-			});
-
-			const techBackground = document.querySelector<HTMLElement>('.tech-background');
-			const updatePlurGrid = () => {
-				if (!techBackground) return;
-				const gridSize = parseFloat(getComputedStyle(document.documentElement).fontSize) * 4;
-				const baseCell = 1;
-				const shadows = [];
-				const gridMarkColor = document.documentElement.dataset.theme === 'light'
-					? 'rgba(63, 63, 70, 0.16)'
-					: 'rgba(148, 163, 184, 0.1)';
-
-				for (let row = baseCell; row * gridSize < window.innerHeight; row += 2) {
-					for (let column = baseCell; column * gridSize < window.innerWidth; column += 2) {
-						if (row === baseCell && column === baseCell) continue;
-						shadows.push(`${(column - baseCell) * gridSize}px ${(row - baseCell) * gridSize}px 0 ${gridMarkColor}`);
-					}
-				}
-
-				techBackground.style.setProperty('--plur-shadows', shadows.join(', '));
-			};
-
-			updatePlurGrid();
-			window.addEventListener('resize', updatePlurGrid);
-
-			const navMenu = document.querySelector('.navMenu');
-			const terminalLine = navMenu?.querySelector<HTMLElement>('.terminal-line');
-			const navLightTargets = navMenu
-				? [...navMenu.querySelectorAll(':scope > .terminal-icon, :scope > a, :scope > ul a, :scope > .nav-controls button svg, :scope > .nav-controls button span')]
-				: [];
-			const lightStartedAt = new WeakMap();
-			const lineDuration = 12000;
-			const linePercent = 0.1;
-
-			const updateNavLight = (time: number) => {
-				if (!navMenu) return;
-				const elapsed = time % lineDuration;
-				const phase = elapsed / lineDuration;
-				const menuWidth = navMenu.getBoundingClientRect().width;
-				const start = 10;
-				const end = menuWidth - 10;
-				const lineWidth = menuWidth * linePercent;
-				let lineStart = start;
-				let currentWidth = 0;
-
-				if (phase >= 0.1 && phase < 0.5) {
-					const progress = (phase - 0.1) / 0.4;
-					const tip = start + (end - start) * progress;
-					if (phase < 0.2) {
-						currentWidth = lineWidth * ((phase - 0.1) / 0.1);
-					} else if (phase >= 0.4) {
-						currentWidth = lineWidth * (1 - ((phase - 0.4) / 0.1));
-					} else {
-						currentWidth = lineWidth;
-					}
-					lineStart = tip - currentWidth;
-				} else if (phase >= 0.6) {
-					const progress = (phase - 0.6) / 0.4;
-					const tip = end - (end - start) * progress;
-					if (phase < 0.7) {
-						currentWidth = lineWidth * ((phase - 0.6) / 0.1);
-					} else if (phase >= 0.9) {
-						currentWidth = lineWidth * (1 - ((phase - 0.9) / 0.1));
-					} else {
-						currentWidth = lineWidth;
-					}
-					lineStart = tip;
-				}
-
-				if (terminalLine) {
-					terminalLine.style.left = `${lineStart}px`;
-					terminalLine.style.width = `${currentWidth}px`;
-				}
-
-				const lineBox = terminalLine?.getBoundingClientRect();
-				const forward = phase >= 0.1 && phase < 0.5;
-				const lineTip = lineBox && currentWidth > 0
-					? (forward ? lineBox.right : lineBox.left)
-					: null;
-				navLightTargets.forEach((target) => {
-					const targetBox = target.getBoundingClientRect();
-					const underTip = lineTip !== null && lineTip >= targetBox.left && lineTip <= targetBox.right;
-					if (!underTip) {
-						lightStartedAt.delete(target);
-						target.classList.remove('nav-lit');
-						return;
-					}
-
-					if (!lightStartedAt.has(target)) lightStartedAt.set(target, time);
-					const illuminated = time - lightStartedAt.get(target) <= 500;
-
-					target.classList.toggle('nav-lit', illuminated);
-				});
-
-				requestAnimationFrame(updateNavLight);
-			};
-
-			requestAnimationFrame((time) => updateNavLight(time));
-		</script>
+		<script src="../scripts/portfolio.ts"></script>
 	</body>
 </html>
