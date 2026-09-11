@@ -3,10 +3,16 @@ main {
   z-index: 1;
   width: min(calc(100% - (var(--page-gutter) * 2)), var(--content-width));
   margin: 0 auto;
-  padding: 0.75rem 1.25rem;
+  padding: 1.75rem 1.25rem;
   background: fixed #52525bb0;
   border: 2px solid rgba(161, 161, 170, 0.3);
   border-radius: 0.75rem;
+  box-shadow: 0 0 1rem rgb(161 161 170 / 35%);
+  backdrop-filter: blur(0.75rem);
+}
+
+main > section {
+  scroll-margin-top: 5.5rem;
 }
 
 .grid-racers {
@@ -44,6 +50,33 @@ main {
     border-radius: 50%;
     background: #39d353;
     box-shadow: 0 0 0 0.2rem rgb(57 211 83 / 18%), 0 0 0.7rem #39d353;
+}
+
+.section-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: fit-content;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.section-toggle:focus-visible {
+  outline: 2px solid #fbbf24;
+  outline-offset: 0.25rem;
+}
+
+.section-toggle[aria-expanded='false'] .online-dot {
+  background: #71717a;
+  box-shadow: 0 0 0 0.2rem rgb(113 113 122 / 18%), 0 0 0.7rem rgb(113 113 122 / 55%);
+}
+
+.section-collapsed > h1 {
+  margin-bottom: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {

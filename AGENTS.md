@@ -5,8 +5,9 @@
 - Always review responsive behavior at mobile, tablet, and desktop widths before considering a frontend change complete.
 - Use semantic HTML, accessible labels, visible focus states, and navigation links that work with the page section IDs.
 - Keep the first implementation simple and progressive: prioritize structure and content before adding interactivity or visual effects.
-- Do not run a production build after every change; only build when explicitly requested or when a final verification is needed.
+- Don't do the build every prompt, only when user indicate it.
 - Keep the rules of typescript, don't use any, and avoid disabling eslint rules unless absolutely necessary. If you must disable a rule, add a comment explaining why.
+
 
 ## Documentation
 

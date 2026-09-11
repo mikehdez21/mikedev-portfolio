@@ -1,6 +1,49 @@
-	<h1>
-        <span class="online-dot" aria-hidden="true">
-		</span>Experiencia
-    </h1>
-	<p>Este es un ejemplo de contenido para experiencia.</p>
+---
+import '@styles/components/experience.css';
+---
+
+	<section id="experiencia" class="experience-section" aria-labelledby="experience-title">
+	<h1 id="experience-title">
+		<button class="section-toggle" type="button" data-section-toggle aria-label="Contraer experiencia laboral" aria-expanded="true" aria-controls="experience-timeline">
+			<span class="online-dot" aria-hidden="true"></span>
+			<span>Experiencia laboral</span>
+		</button>
+	</h1>
+
+	<div id="experience-timeline" class="experience-timeline">
+		<article class="experience-entry">
+			<svg class="experience-marker" viewBox="0 0 20 20" aria-hidden="true">
+				<circle cx="10" cy="10" r="6" />
+			</svg>
+
+			<section id="exp_HospitalSanSerafin" class="experience-content" aria-labelledby="exp-hospital-title">
+				<p class="experience-date">
+					<span>02/2024 - Actual</span>
+					<span class="experience-date-connector" aria-hidden="true"></span>
+				</p>
+				<p class="experience-company">Hospital San Serafín</p>
+				
+				<h2 id="exp-hospital-title">Ingeniero en Desarrollo de Sistemas, Soporte e Infraestructura</h2>
+				<p class="experience-summary">
+					Diseñé e implementé soluciones internas para automatizar procesos,
+					mejorar la trazabilidad y aumentar la eficiencia operativa.
+				</p>
+				<ul>
+					<li>
+						Implementaciones internas: 
+						<ul class="experience-sublist">
+							<li>Sistema de gestión de activos fijos para el área de Almacén pasando de un uso excel -> sistema legacy -> a mi sistema web moderno. Administra toda la trazabilidad de los activos, desde su adquisición hasta su asignación final permitiendo saber su responsable y ubicación exacta con su etiqueta QR con impresora Zebra.</li>
+							<li>Sistema de agendas de citas para el área de Consulta Externa.</li>
+							<li>Sistema de emisión de etiquetas para instrumental en el departamento de CEYE.</li>
+							<li>Plataforma Helpdesk con QR, Forms, Power Apps, Power Automate y dashboards en Power BI para las incidencias del Departamento de Sistemas.</li>
+						</ul>
+					</li>
+					<li>Administré y desplegué servidores Ubuntu con Apache, PostgreSQL y DNS para servir y mantener las aplicaciones y servicios internos que desarrollé.</li>
+					<li>Generé reportes en Crystal Reports y consultas SQL de la base de datos del ERP y HIS principal para apoyar auditorías, dirección y áreas operativas.</li>
+					<li>Redujé costos de licencias en un 60% mediante análisis técnico, negociación y migración a soluciones autogestionadas, implementando Veeam Backup &amp; Replication.</li>
+				</ul>
+			</section>
+
+		</article>
+	</div>
 </section>
