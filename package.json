@@ -23,7 +23,9 @@
 		"esbuild": true
 	},
 	"devDependencies": {
+		"@astrojs/check": "^0.9.10",
 		"@types/node": "^26.5.0",
+		"typescript": "^7.0.2",
 		"wrangler": "^4.130.0"
 	}
 }

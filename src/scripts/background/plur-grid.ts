@@ -19,7 +19,16 @@ export function initPlurGrid(): () => void {
 		techBackground.style.setProperty('--plur-shadows', shadows.join(', '));
 	};
 
+	let resizeFrame = 0;
+	const onResize = (): void => {
+		if (resizeFrame) return;
+		resizeFrame = requestAnimationFrame(() => {
+			resizeFrame = 0;
+			update();
+		});
+	};
+
 	update();
-	window.addEventListener('resize', update);
+	window.addEventListener('resize', onResize);
 	return update;
 }

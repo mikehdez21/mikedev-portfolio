@@ -24,6 +24,7 @@ export function initNavLight(): void {
 	const lightStartedAt = new WeakMap<Element, number>();
 
 	const update = (time: number): void => {
+		if (document.hidden) return;
 		const phase = (time % 12000) / 12000;
 		const start = 10;
 		const end = layout.width - 10;
@@ -45,8 +46,11 @@ export function initNavLight(): void {
 
 		terminalLine.style.left = `${lineStart}px`;
 		terminalLine.style.width = `${currentWidth}px`;
-		const lineBox = terminalLine.getBoundingClientRect();
-		const lineTip = currentWidth > 0 ? (phase >= 0.1 && phase < 0.5 ? lineBox.right : lineBox.left) - layout.left : null;
+		// lineStart and currentWidth are already relative to the menu, so avoid
+		// forcing a layout read on every animation frame.
+		const lineTip = currentWidth > 0
+			? phase >= 0.1 && phase < 0.5 ? lineStart + currentWidth : lineStart
+			: null;
 
 		layout.targets.forEach(({ target, left, right }) => {
 			const underTip = lineTip !== null && lineTip >= left && lineTip <= right;
@@ -63,4 +67,7 @@ export function initNavLight(): void {
 	};
 
 	requestAnimationFrame(update);
+	document.addEventListener('visibilitychange', () => {
+		if (!document.hidden) requestAnimationFrame(update);
+	});
 }

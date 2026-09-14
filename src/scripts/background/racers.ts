@@ -11,6 +11,7 @@ type Racer = {
 
 const bounds = { width: 1440, height: 900, cell: 64 };
 const speed = 110;
+const maxTrailPoints = 800;
 const directions: Direction[] = [
 	{ x: 1, y: 0 },
 	{ x: -1, y: 0 },
@@ -40,7 +41,11 @@ const chooseDirection = (racer: Racer, target: Racer): void => {
 		return isInside(nextX, nextY) && !racer.visited.has(cellKey(nextX, nextY));
 	});
 
-	if (options.length === 0) return;
+	if (options.length === 0) {
+		const canReverse = isInside(racer.x + opposite.x * bounds.cell, racer.y + opposite.y * bounds.cell);
+		if (canReverse) racer.direction = opposite;
+		return;
+	}
 	const rankedOptions = options
 		.map((direction) => ({
 			direction,
@@ -90,7 +95,7 @@ const moveRacer = (racer: Racer, target: Racer, delta: number): boolean => {
 
 	const lastPoint = racer.trail[racer.trail.length - 1];
 	if (distance(racer, lastPoint) > 7) racer.trail.push([racer.x, racer.y]);
-	if (racer.trail.length > 1600) racer.trail.splice(0, racer.trail.length - 1600);
+	if (racer.trail.length > maxTrailPoints) racer.trail.splice(0, racer.trail.length - maxTrailPoints);
 	return false;
 };
 
@@ -113,6 +118,7 @@ export function initRacers(): void {
 	};
 
 	const animate = (time: number): void => {
+		if (document.hidden) return;
 		const delta = Math.min((time - lastFrame) / 1000, 0.05);
 		lastFrame = time;
 		const collision = moveRacer(racers[0], racers[1], delta) || moveRacer(racers[1], racers[0], delta);
@@ -130,5 +136,12 @@ export function initRacers(): void {
 	requestAnimationFrame((time) => {
 		lastFrame = time;
 		requestAnimationFrame(animate);
+	});
+
+	document.addEventListener('visibilitychange', () => {
+		if (!document.hidden) {
+			lastFrame = performance.now();
+			requestAnimationFrame(animate);
+		}
 	});
 }
