@@ -1,13 +1,14 @@
 ---
 import '@styles/components/navbar.css';
 import '@styles/components/light-styles/navbar-light.css';
+import Text from '@/components/i18n/Text.astro';
 ---
 
 <nav>
     <div class="navMenu">
 
         <span class="terminal-line" aria-hidden="true"></span>
-        <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="primary-navigation">
+        <button class="menu-toggle" type="button" aria-label="Open menu" data-i18n-aria-label="nav.menuOpen" aria-expanded="false" aria-controls="primary-navigation">
             <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4 7h16M4 12h16M4 17h16" />
             </svg>
@@ -18,18 +19,18 @@ import '@styles/components/light-styles/navbar-light.css';
             <path d="m7 9 3 3-3 3m5 0h4" />
         </svg>
 
-        <a href="#inicio" aria-label="Volver al inicio">Miguel Angel Rendon Hernandez</a>
+        <a href="#inicio" aria-label="Volver al inicio"><Text path="nav.brand" /></a>
         <ul id="primary-navigation">
-            <li><a href="#acerca">Acerca</a></li>
-            <li><a href="#experiencia">Experiencia</a></li>
-            <li><a href="#proyectos">Proyectos</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#acerca"><Text path="nav.about" /></a></li>
+            <li><a href="#experiencia"><Text path="nav.experience" /></a></li>
+            <li><a href="#proyectos"><Text path="nav.projects" /></a></li>
+            <li><a href="#skills"><Text path="nav.skills" /></a></li>
+            <li><a href="#contacto"><Text path="nav.contact" /></a></li>
         </ul>
 
         <div class="nav-controls">
 
-            <button class="mode-toggle" type="button" aria-label="Cambiar a modo claro">
+            <button class="mode-toggle" type="button" aria-label="Cambiar a modo claro" data-i18n-aria-label="nav.themeToLight">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <g class="theme-moon">
                         <path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z" />
@@ -41,12 +42,12 @@ import '@styles/components/light-styles/navbar-light.css';
                 </svg>
             </button>
 
-            <button class="language-toggle" type="button" aria-label="Cambiar idioma, actualmente español">
+			<button class="language-toggle" type="button" aria-label="Switch to Spanish" data-language-toggle data-i18n-aria-label="nav.languageToSpanish">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <circle cx="12" cy="12" r="9" />
                     <path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9s-1.1 6.6-3.3 9c-2.2-2.4-3.3-5.4-3.3-9S9.8 5.4 12 3Z" />
                 </svg>
-                <span>ES</span>
+                <span data-language-label>ES</span>
             </button>
             
         </div>

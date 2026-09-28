@@ -1,3 +1,5 @@
+import { onLocaleChange, t } from '@/i18n';
+
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 const WEB3FORMS_ACCESS_KEY = 'c5675803-a847-4734-8985-e1d36cbe8a68';
 const SENDER_NAME = 'Portfolio · mikedev';
@@ -40,8 +42,8 @@ export function initContactForm(): void {
 		clearFieldErrors(form);
 		sending = true;
 		submit.disabled = true;
-		submitLabel.textContent = 'Enviando…';
-		setStatus('Enviando tu mensaje…', 'pending');
+		submitLabel.textContent = t('contact.pending');
+		setStatus(t('contact.pending'), 'pending');
 
 		try {
 			const response = await fetch(WEB3FORMS_ENDPOINT, {
@@ -63,18 +65,24 @@ export function initContactForm(): void {
 
 			if (response.ok && answer.success) {
 				form.reset();
-				setStatus('Mensaje enviado. Te responderé pronto.', 'success');
+				setStatus(t('contact.success'), 'success');
 				return;
 			}
 
 			setStatus(answer.message ?? 'No pudimos enviar el mensaje. Inténtalo de nuevo.', 'error');
 		} catch {
-			setStatus('No pudimos enviar el mensaje. Revisa tu conexión e inténtalo de nuevo.', 'error');
+			setStatus(t('contact.networkError'), 'error');
 		} finally {
 			sending = false;
-			submitLabel.textContent = 'Enviar mensaje';
+			submitLabel.textContent = t('contact.submit');
 			submit.disabled = false;
 		}
+	});
+
+	onLocaleChange(() => {
+		if (status.dataset.state === undefined || status.dataset.state === 'idle') return;
+		if (sending) return;
+		if (status.dataset.state === 'success') status.textContent = t('contact.success');
 	});
 }
 

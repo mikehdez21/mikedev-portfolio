@@ -1,12 +1,9 @@
-interface GalleryImage {
-	src: string;
-	alt: string;
-}
+import { onLocaleChange, t } from '@/i18n';
 
 let lightbox: HTMLDialogElement | null = null;
 let lightboxImage: HTMLImageElement | null = null;
 let lightboxCounter: HTMLElement | null = null;
-let lightboxImages: GalleryImage[] = [];
+let lightboxSlides: HTMLImageElement[] = [];
 let lightboxIndex = 0;
 let lightboxTrack: HTMLElement | null = null;
 let lightboxTrigger: HTMLElement | null = null;
@@ -24,27 +21,29 @@ function scrollTrackTo(track: HTMLElement, index: number): void {
 
 function updateLightbox(): void {
 	if (!lightboxImage || !lightboxCounter) return;
-	const current = lightboxImages[lightboxIndex];
+	const current = lightboxSlides[lightboxIndex];
 	if (!current) return;
-	lightboxImage.src = current.src;
-	lightboxImage.alt = current.alt;
-	lightboxCounter.textContent = `${lightboxIndex + 1} de ${lightboxImages.length}`;
+	// El `alt` se lee del DOM en el momento de abrir, no se captura al iniciar:
+	// así el lightbox respeta el idioma activo tras cambiarlo.
+	lightboxImage.src = current.getAttribute('src') ?? '';
+	lightboxImage.alt = current.getAttribute('alt') ?? '';
+	lightboxCounter.textContent = `${lightboxIndex + 1} ${t('projects.of')} ${lightboxSlides.length}`;
 }
 
 function showImageAt(index: number): void {
-	if (lightboxImages.length === 0) return;
-	lightboxIndex = (index + lightboxImages.length) % lightboxImages.length;
+	if (lightboxSlides.length === 0) return;
+	lightboxIndex = (index + lightboxSlides.length) % lightboxSlides.length;
 	updateLightbox();
 	if (lightboxTrack) {
 		scrollTrackTo(lightboxTrack, lightboxIndex);
 	}
 }
 
-function createButton(label: string, text: string, className: string): HTMLButtonElement {
+function createButton(label: () => string, text: string, className: string): HTMLButtonElement {
 	const button = document.createElement('button');
 	button.type = 'button';
 	button.className = className;
-	button.setAttribute('aria-label', label);
+	button.setAttribute('aria-label', label());
 	button.textContent = text;
 	return button;
 }
@@ -52,7 +51,7 @@ function createButton(label: string, text: string, className: string): HTMLButto
 function createLightbox(): HTMLDialogElement {
 	const dialog = document.createElement('dialog');
 	dialog.id = 'project-lightbox';
-	dialog.setAttribute('aria-label', 'Visor de imágenes del proyecto');
+	dialog.setAttribute('aria-label', t('projects.lightboxLabel'));
 
 	const inner = document.createElement('div');
 	inner.className = 'project-lightbox-inner';
@@ -69,16 +68,16 @@ function createLightbox(): HTMLDialogElement {
 	const bar = document.createElement('div');
 	bar.className = 'project-lightbox-bar';
 
-	const prev = createButton('Imagen anterior', '←', 'project-lightbox-btn');
+	const prev = createButton(() => t('projects.previousShort'), '←', 'project-lightbox-btn');
 	const counter = document.createElement('p');
 	counter.className = 'project-lightbox-counter';
-	const next = createButton('Imagen siguiente', '→', 'project-lightbox-btn');
+	const next = createButton(() => t('projects.nextShort'), '→', 'project-lightbox-btn');
 
 	bar.appendChild(prev);
 	bar.appendChild(counter);
 	bar.appendChild(next);
 
-	const close = createButton('Cerrar', '×', 'project-lightbox-btn project-lightbox-close');
+	const close = createButton(() => t('projects.close'), '×', 'project-lightbox-btn project-lightbox-close');
 
 	inner.appendChild(figure);
 	inner.appendChild(bar);
@@ -112,7 +111,7 @@ function createLightbox(): HTMLDialogElement {
 		}
 	});
 	dialog.addEventListener('close', () => {
-		lightboxImages = [];
+		lightboxSlides = [];
 		lightboxIndex = 0;
 		lightboxTrack = null;
 		lightboxTrigger?.focus();
@@ -127,9 +126,9 @@ function createLightbox(): HTMLDialogElement {
 	return dialog;
 }
 
-function openLightbox(images: GalleryImage[], index: number, track: HTMLElement, trigger: HTMLElement): void {
+function openLightbox(slides: HTMLImageElement[], index: number, track: HTMLElement, trigger: HTMLElement): void {
 	const dialog = lightbox ?? createLightbox();
-	lightboxImages = images;
+	lightboxSlides = slides;
 	lightboxIndex = index;
 	lightboxTrack = track;
 	lightboxTrigger = trigger;
@@ -137,6 +136,18 @@ function openLightbox(images: GalleryImage[], index: number, track: HTMLElement,
 	if (!dialog.open) {
 		dialog.showModal();
 	}
+}
+
+function localizeLightbox(): void {
+	if (!lightbox) return;
+	lightbox.setAttribute('aria-label', t('projects.lightboxLabel'));
+	const buttons = lightbox.querySelectorAll<HTMLButtonElement>('.project-lightbox-btn');
+	const labels = [t('projects.previousShort'), t('projects.nextShort'), t('projects.close')];
+	buttons.forEach((button, index) => {
+		const label = labels[index];
+		if (label) button.setAttribute('aria-label', label);
+	});
+	updateLightbox();
 }
 
 export function initGalleries(): void {
@@ -147,13 +158,9 @@ export function initGalleries(): void {
 		const prev = card?.querySelector<HTMLButtonElement>('[data-gallery-prev]') ?? null;
 		const next = card?.querySelector<HTMLButtonElement>('[data-gallery-next]') ?? null;
 		const slides = Array.from(track.querySelectorAll<HTMLElement>('.project-card-slide'));
-		const images: GalleryImage[] = slides.map((slide) => {
-			const img = slide.querySelector<HTMLImageElement>('img');
-			return {
-				src: img?.getAttribute('src') ?? '',
-				alt: img?.getAttribute('alt') ?? '',
-			};
-		});
+		const images: HTMLImageElement[] = slides
+			.map((slide) => slide.querySelector<HTMLImageElement>('img'))
+			.filter((img): img is HTMLImageElement => img !== null);
 		let index = 0;
 		let scrollFrame = 0;
 
@@ -195,4 +202,6 @@ export function initGalleries(): void {
 			scrollTrackTo(track, index);
 		});
 	});
+
+	onLocaleChange(() => localizeLightbox());
 }

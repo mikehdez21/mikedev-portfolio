@@ -1,0 +1,16 @@
+---
+import { DEFAULT_LOCALE, tList } from '@/i18n';
+
+interface Props {
+	path: string;
+	index: number;
+	params?: Record<string, string | number>;
+}
+
+const { path, index, params } = Astro.props;
+const en = tList(path, params, DEFAULT_LOCALE)[index] ?? '';
+const es = tList(path, params, 'es')[index] ?? '';
+---
+
+<span data-lang={DEFAULT_LOCALE} data-i18n-path={path} data-i18n-index={index}>{en}</span>
+<span data-lang="es" data-i18n-path={path} data-i18n-index={index} hidden>{es}</span>

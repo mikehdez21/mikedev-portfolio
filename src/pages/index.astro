@@ -5,6 +5,7 @@ import '@styles/main.css';
 import '@styles/components/navbar.css';
 import '@styles/components/light-styles/navbar-light.css';
 import '@fontsource-variable/montserrat/wght.css';
+import { DEFAULT_LOCALE, t } from '@/i18n';
 import Navbar from '@/components/navbar.astro';
 import Home from '@/components/home.astro';
 import About from '@/components/about.astro';
@@ -16,15 +17,15 @@ import Footer from '@/components/footer.astro'
 
 ---
 
-<html lang="es">
+<html lang={DEFAULT_LOCALE}>
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="Dev-Portfolio by Miguel Angel Rendon Hernandez" />
-		<title>@mikehdez21 | Portfolio</title>
+		<meta name="description" content={t('meta.description', undefined, DEFAULT_LOCALE)} data-i18n-content="meta.description" />
+		<title data-i18n-path="meta.title">{t('meta.title', undefined, DEFAULT_LOCALE)}</title>
 	</head>
 
 	<body>

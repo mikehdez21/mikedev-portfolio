@@ -1,21 +1,46 @@
 ---
 import '@styles/components/projects.css';
-import AdminCareCard from '@/components/projects/admincare/admincare-card.astro';
+import { getCollection } from 'astro:content';
+import ProjectCard from '@/components/projects/project-card.astro';
+import Text from '@/components/i18n/Text.astro';
+import { LOCALES, type Locale } from '@/i18n';
+
+const entries = await getCollection('projects');
+const visibleEntries = entries.filter((entry) => entry.data.visible);
+
+const projects = [...new Set(visibleEntries.map((entry) => entry.data.project))].sort((a, b) => {
+	const orderA = visibleEntries.find((entry) => entry.data.project === a)?.data.order ?? 99;
+	const orderB = visibleEntries.find((entry) => entry.data.project === b)?.data.order ?? 99;
+	return orderA - orderB || a.localeCompare(b);
+});
+
+const byLanguage = (project: string, language: Locale) =>
+	visibleEntries.find((entry) => entry.data.project === project && entry.data.language === language);
 ---
 
 <section id="proyectos" aria-labelledby="projects-title">
 	<h1 id="projects-title">
-		<button class="section-toggle" type="button" data-section-toggle aria-label="Contraer proyectos" aria-expanded="true" aria-controls="projects-content">
+		<button class="section-toggle" type="button" data-section-toggle aria-expanded="true" aria-controls="projects-content">
 			<span class="online-dot" aria-hidden="true"></span>
-			<span>Proyectos</span>
+			<Text path="projects.title" />
 		</button>
-    </h1>
+	</h1>
 	<div id="projects-content">
-		<!-- Cada proyecto es un componente propio en src/components/projects/<proyecto>/.
-		     Los href="#" son placeholders documentados: no navegan hasta que pongas las URLs reales
-		     en los archivos de cada proyecto. -->
+		<!-- Los datos viven en `src/content/projects/<proyecto>.<lang>.md` (un archivo por
+		     idioma). El componente `project-card.astro` es genérico: para dar de alta un
+		     proyecto basta con agregar los dos archivos. Con `visible: false` la entrada
+		     se conserva pero no se renderiza. Los href="#" son placeholders documentados
+		     en el schema: no navegan hasta que pongas las URLs reales. -->
 		<ul class="projects-grid">
-			<AdminCareCard />
+			{
+				projects.map((project) =>
+					LOCALES.map((language) => {
+						const entry = byLanguage(project, language);
+						if (!entry) return null;
+						return <ProjectCard project={entry} language={language} />;
+					})
+				)
+			}
 		</ul>
 	</div>
 </section>

@@ -1,0 +1,120 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Text from '@/components/i18n/Text.astro';
+import { DEFAULT_LOCALE, type Locale } from '@/i18n';
+
+interface Props {
+	project: CollectionEntry<'projects'>;
+	language: Locale;
+}
+
+const { project, language } = Astro.props;
+const { title, description, technologies, images, githubUrl, demoUrl } = project.data;
+const isHidden = language !== DEFAULT_LOCALE;
+---
+
+<li data-lang={language} hidden={isHidden}>
+	<article class="project-card">
+		{
+			images.length > 0 && (
+				<div class="project-card-media-wrap">
+					<div
+						class="project-card-media"
+						data-gallery={images.length > 1 ? '' : undefined}
+						role={images.length > 1 ? 'group' : undefined}
+						tabindex={images.length > 1 ? 0 : undefined}
+						aria-label={images.length > 1 ? `Gallery of ${images.length} ${title} screenshots` : undefined}
+						data-i18n-aria-label="projects.galleryLabel"
+						data-i18n-aria-label-params={`count:${images.length},title:${title}`}
+					>
+						{images.map((image) => (
+							<div class="project-card-slide">
+								<img
+									src={image.src}
+									alt={image.alt}
+									loading="lazy"
+									decoding="async"
+								/>
+							</div>
+						))}
+					</div>
+					{images.length > 1 && (
+						<>
+							<span class="project-card-counter" data-gallery-counter aria-hidden="true">
+								1/{images.length}
+							</span>
+							<button
+								type="button"
+								class="project-card-expand"
+								data-gallery-expand
+								aria-label={`View ${title} full size`}
+								data-i18n-aria-label="projects.expand"
+								data-i18n-aria-label-params={`title:${title}`}
+							>
+								<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+									<path d="M8 3H5a2 2 0 0 0-2 2v3" />
+									<path d="M16 3h3a2 2 0 0 1 2 2v3" />
+									<path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+									<path d="M8 21H5a2 2 0 0 1-2-2v-3" />
+								</svg>
+							</button>
+							<button
+								type="button"
+								class="project-card-arrow"
+								data-gallery-prev
+								aria-label={`Previous ${title} image`}
+								data-i18n-aria-label="projects.previous"
+								data-i18n-aria-label-params={`title:${title}`}
+							>
+								<span aria-hidden="true">←</span>
+							</button>
+							<button
+								type="button"
+								class="project-card-arrow"
+								data-gallery-next
+								aria-label={`Next ${title} image`}
+								data-i18n-aria-label="projects.next"
+								data-i18n-aria-label-params={`title:${title}`}
+							>
+								<span aria-hidden="true">→</span>
+							</button>
+						</>
+					)}
+				</div>
+			)
+		}
+		<div class="project-card-body">
+			<h3 class="project-card-title">{title}</h3>
+			<ul class="project-card-tech">
+				{technologies.map((tech) => (
+					<li class="project-card-tag">{tech}</li>
+				))}
+			</ul>
+			<p class="project-card-description">{description}</p>
+			<div class="project-card-actions">
+				<a
+					class="project-link"
+					href={githubUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label={`View the ${title} code on GitHub`}
+					data-i18n-aria-label="projects.viewCode"
+					data-i18n-aria-label-params={`title:${title}`}
+				>
+					<Text path="projects.code" />
+				</a>
+				<a
+					class="project-link"
+					href={demoUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label={`View the live ${title} demo`}
+					data-i18n-aria-label="projects.viewDemo"
+					data-i18n-aria-label-params={`title:${title}`}
+				>
+					<Text path="projects.demo" />
+				</a>
+			</div>
+		</div>
+	</article>
+</li>

@@ -105,8 +105,7 @@
     }
 }
 
-.home-links,
-.home-buttons {
+.home-links {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -114,8 +113,7 @@
     margin: 1.75rem auto;
 }
 
-.home-link,
-.home-buttons .btn {
+.home-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -129,21 +127,18 @@
     transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease;
 }
 
-.home-link:hover,
-.home-buttons .btn:hover {
+.home-link:hover {
     border-color: #22d3ee;
     background-color: rgb(34 211 238 / 10%);
     color: #22d3ee;
 }
 
-.home-link:focus-visible,
-.home-buttons .btn:focus-visible {
+.home-link:focus-visible {
     outline: 2px solid #fbbf24;
     outline-offset: 0.2rem;
 }
 
-.home-link-primary,
-.home-buttons .btn-primary {
+.home-link-primary {
     border-color: #fbbf24;
     color: #fbbf24;
 }
@@ -226,13 +221,11 @@
         margin-top: 1.25rem;
     }
 
-    .home-links,
-    .home-buttons {
+    .home-links {
         gap: 0.55rem;
     }
 
-    .home-link,
-    .home-buttons .btn {
+    .home-link {
         flex: 1 1 calc(50% - 0.55rem);
         padding-inline: 0.65rem;
     }

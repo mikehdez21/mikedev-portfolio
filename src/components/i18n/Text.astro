@@ -1,0 +1,15 @@
+---
+import { DEFAULT_LOCALE, t } from '@/i18n';
+
+interface Props {
+	path: string;
+	params?: Record<string, string | number>;
+	tag?: 'span' | 'p';
+}
+
+const { path, params, tag = 'span' } = Astro.props;
+const Tag = tag;
+---
+
+<Tag data-lang={DEFAULT_LOCALE} data-i18n-path={path}>{t(path, params, DEFAULT_LOCALE)}</Tag>
+<Tag data-lang="es" data-i18n-path={path} hidden>{t(path, params, 'es')}</Tag>
