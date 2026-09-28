@@ -320,16 +320,17 @@
 
 .project-link {
   display: inline-flex;
-  flex: 1 1 auto;
+  flex: 1 1 0;
   align-items: center;
   justify-content: center;
-  min-width: 7rem;
+  min-width: 0;
+  max-width: 100%;
   min-height: 2.75rem;
-  padding: 0.55rem 0.9rem;
+  padding: clamp(0.5rem, 1.6vw, 0.9rem);
   border: 1px solid rgb(161 161 170 / 45%);
   border-radius: 0.45rem;
   color: inherit;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 2.6vw, 0.9rem);
   text-decoration: none;
   transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease;
 }
@@ -355,7 +356,9 @@
   .projects-grid {
     gap: 0.9rem;
   }
+}
 
+@media (max-width: 360px) {
   .project-card-actions {
     flex-direction: column;
     align-items: stretch;
