@@ -1,15 +1,209 @@
 ---
 import '@styles/components/skills.css';
+import '@styles/components/light-styles/skills.light.css';
+import {
+	siReact,
+	siNextdotjs,
+	siAstro,
+	siJavascript,
+	siTypescript,
+	siHtml5,
+	siCss,
+	siBootstrap,
+	siAxios,
+	siPhp,
+	siLaravel,
+	siNodedotjs,
+	siNestjs,
+	siExpress,
+	siZod,
+	siSocketdotio,
+	siPostgresql,
+	siSqlite,
+	siSupabase,
+	siPostman,
+	siYaak,
+	siDbeaver,
+	siClaudecode,
+	siOpencode,
+	siGit,
+	siGithub,
+	siGithubactions,
+	siVeeam,
+	siApache,
+	siUbuntu,
+	siVercel,
+	siRailway,
+	siCloudflare,
+	siVitest,
+	siTestinglibrary,
+	siCypress
+} from 'simple-icons';
+
+import awsLogo from '@iconify-json/logos/icons.json' with { type: 'json' };
+import openaiLogo from '@iconify-json/logos/icons.json' with { type: 'json' };
+
+const DARK = '#e7e9ea';
+
+const brand = (icon: { path: string; hex: string }, color?: string) =>
+	`<path d="${icon.path}" fill="${color ?? `#${icon.hex}`}"/>`;
+
+const brandOnDark = (icon: { path: string; hex: string }) => brand(icon, DARK);
+
+const outline = (path: string, color: string) =>
+	`<path d="${path}" fill="none" stroke="${color}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>`;
+
+const aws = (awsLogo.icons.aws as { body: string }).body.replaceAll('#252f3e', DARK);
+const openai = `<path d="${(openaiLogo.icons['openai-icon'] as { body: string }).body.replace(/^<path d="|"\/>$/g, '')}" fill="#10a37f"/>`;
+
+const rpt = `<path d="M6.8 2.4h6.9L18.2 7.5v13.1a1 1 0 0 1-1 1H6.8a1 1 0 0 1-1-1V3.4a1 1 0 0 1 1-1Z" fill="#0b4f9e"/>
+<path d="M13.7 2.4v5.1h4.5" fill="none" stroke="#7db4f0" stroke-width="1.3" stroke-linejoin="round"/>
+<text x="11.6" y="17.6" text-anchor="middle" font-size="5.9" font-weight="700" letter-spacing="0.2" fill="#ffffff">RPT</text>`;
+
+const thunder = `<defs><linearGradient id="tc-bolt" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#ffe000"/><stop offset="1" stop-color="#4cd964"/>
+</linearGradient></defs><path d="M13.6 1.8 4.9 13.4h5.3L9.6 22.2l9.5-12.1h-5.6Z" fill="url(#tc-bolt)"/>`;
+
+const server = `<g fill="none" stroke="#7dd3fc" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="3.2" y="3.6" width="17.6" height="7" rx="1.6"/>
+<rect x="3.2" y="13.4" width="17.6" height="7" rx="1.6"/>
+<path d="M11 7.1h6.4M11 16.9h6.4"/>
+</g><g fill="#7dd3fc"><circle cx="6.6" cy="7.1" r="1.05"/><circle cx="6.6" cy="16.9" r="1.05"/></g>`;
+
+type Skill = { name: string; body: string; viewBox?: string; tone?: 'mono' | 'aws' };
+type SkillGroup = { id: string; title: string; skills: Skill[] };
+
+const groups: SkillGroup[] = [
+	{
+		id: 'frontend',
+		title: 'Frontend',
+		skills: [
+			{ name: 'React', body: brand(siReact) },
+			{ name: 'Next.js', body: brandOnDark(siNextdotjs), tone: 'mono' },
+			{ name: 'Astro', body: brand(siAstro) },
+			{ name: 'JavaScript', body: brand(siJavascript) },
+			{ name: 'TypeScript', body: brand(siTypescript) },
+			{ name: 'HTML5', body: brand(siHtml5) },
+			{ name: 'CSS3', body: brand(siCss) },
+			{ name: 'Bootstrap', body: brand(siBootstrap) },
+			{ name: 'Axios', body: brand(siAxios) },
+			{ name: 'Fetch API', body: outline('M3.5 8.4h13.2l-3.4-3.4M20.5 15.6H7.3l3.4 3.4', '#38bdf8') }
+		]
+	},
+	{
+		id: 'backend',
+		title: 'Backend',
+		skills: [
+			{ name: 'PHP', body: brand(siPhp) },
+			{ name: 'Laravel', body: brand(siLaravel) },
+			{ name: 'Node.js', body: brand(siNodedotjs) },
+			{ name: 'NestJS', body: brand(siNestjs) },
+			{ name: 'Express', body: brandOnDark(siExpress), tone: 'mono' },
+			{ name: 'Zod', body: brand(siZod) },
+			{ name: 'APIs RESTful', body: outline('M3.5 8.4h13.2l-3.4-3.4M20.5 15.6H7.3l3.4 3.4', '#f472b6') },
+			{ name: 'WebSockets', body: brandOnDark(siSocketdotio), tone: 'mono' }
+		]
+	},
+	{
+		id: 'databases',
+		title: 'Base de Datos',
+		skills: [
+			{ name: 'PostgreSQL', body: brand(siPostgresql) },
+			{ name: 'SQLite', body: brand(siSqlite) },
+			{ name: 'Supabase', body: brand(siSupabase) },
+			{ name: 'Crystal Reports', body: rpt }
+		]
+	},
+	{
+		id: 'ai',
+		title: 'IA y Harness Engineering',
+		skills: [
+			{ name: 'OpenCode', body: brandOnDark(siOpencode), tone: 'mono' },
+			{ name: 'OpenAI', body: openai, viewBox: '-6 0 268 260' },
+			{ name: 'Claude Code', body: brand(siClaudecode) },
+			{ name: 'Agentes de IA', body: outline('M12 2.8 13.7 7.4 18.3 9.1 13.7 10.8 12 15.4 10.3 10.8 5.7 9.1 10.3 7.4Zm6 9.4 1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1Z', '#a78bfa') },
+			{ name: 'Agent Skills', body: outline('M8.6 6.6 3.5 12l5.1 5.4M15.4 6.6 20.5 12l-5.1 5.4M13.4 3.8l-2.8 16.4', '#c084fc') },
+			{ name: 'Hooks de Agentes', body: outline('M3.2 5.4A1.6 1.6 0 0 1 4.8 3.8h14.4a1.6 1.6 0 0 1 1.6 1.6v13.2a1.6 1.6 0 0 1-1.6 1.6H4.8a1.6 1.6 0 0 1-1.6-1.6Zm3 4.4 2.8 2.7-2.8 2.7M11.4 16.2h5', '#34d399') },
+			{ name: 'Servidores MCP', body: outline('M6.8 18.5a3.9 3.9 0 0 1-.4-7.8 5.5 5.5 0 0 1 10.4-1.9 3.9 3.9 0 0 1 .7 7.7Z', '#60a5fa') },
+			{ name: 'Ingeniería de Prompts', body: outline('M4.4 5.5h15.2M4.4 12h15.2M4.4 18.5h9.6', '#fbbf24') }
+		]
+	},
+	{
+		id: 'devops',
+		title: 'DevOps y Herramientas',
+		skills: [
+			{ name: 'AWS', body: aws, viewBox: '-1 0 259 153', tone: 'aws' },
+			{ name: 'Git', body: brand(siGit) },
+			{ name: 'GitHub', body: brandOnDark(siGithub), tone: 'mono' },
+			{ name: 'GitHub Actions', body: brand(siGithubactions) },
+			{ name: 'CI/CD', body: outline('M3.5 8.4h13.2l-3.4-3.4M20.5 15.6H7.3l3.4 3.4', '#f87171') },
+			{ name: 'Apache', body: brand(siApache) },
+			{ name: 'Ubuntu', body: brand(siUbuntu) },
+			{ name: 'Veeam', body: brand(siVeeam) },
+			{ name: 'DBeaver', body: brand(siDbeaver) }
+		]
+	},
+	{
+		id: 'deploys',
+		title: 'Deploys y Plataformas',
+		skills: [
+			{ name: 'Vercel', body: brandOnDark(siVercel), tone: 'mono' },
+			{ name: 'Railway', body: brandOnDark(siRailway), tone: 'mono' },
+			{ name: 'Cloudflare', body: brand(siCloudflare) },
+			{ name: 'On-Premise', body: server }
+		]
+	},
+	{
+		id: 'clients',
+		title: 'Clientes API',
+		skills: [
+			{ name: 'Postman', body: brand(siPostman) },
+			{ name: 'Thunder Client', body: thunder },
+			{ name: 'Yaak', body: brand(siYaak) }
+		]
+	},
+	{
+		id: 'testing',
+		title: 'Testing',
+		skills: [
+			{ name: 'Vitest', body: brand(siVitest) },
+			{ name: 'React Testing Library', body: brand(siTestinglibrary) },
+			{ name: 'Cypress', body: brand(siCypress) }
+		]
+	}
+];
 ---
 
-<section id="skills" aria-labelledby="skills-title">
+<section id="skills" class="skills-section" aria-labelledby="skills-title">
 	<h1 id="skills-title">
 		<button class="section-toggle" type="button" data-section-toggle aria-label="Contraer skills" aria-expanded="true" aria-controls="skills-content">
 			<span class="online-dot" aria-hidden="true"></span>
 			<span>Skills</span>
 		</button>
-    </h1>
-	<div id="skills-content">
-		<p>Este es un ejemplo de contenido para skills.</p>
+	</h1>
+
+	<div id="skills-content" class="skills-groups">
+		{
+			groups.map((group) => (
+				<section class="skills-group" aria-labelledby={`skills-group-${group.id}`}>
+					<h2 id={`skills-group-${group.id}`}>{group.title}</h2>
+					<ul class="skills-grid">
+						{group.skills.map((skill) => (
+							<li class="skill-item">
+								<svg
+									class:list={['skill-icon', skill.tone && `skill-icon--${skill.tone}`]}
+									role="img"
+									viewBox={skill.viewBox ?? '0 0 24 24'}
+									aria-label={skill.name}
+									focusable="false"
+									set:html={skill.body}
+								/>
+								<span class="skill-label">{skill.name}</span>
+							</li>
+						))}
+					</ul>
+				</section>
+			))
+		}
 	</div>
 </section>
