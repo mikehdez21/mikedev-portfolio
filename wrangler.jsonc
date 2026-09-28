@@ -14,7 +14,7 @@
 	"observability": {
 		"enabled": true
 	},
-	"upload_source_maps": true
+	"upload_source_maps": true,
 	/**
 	 * Smart Placement
 	 * https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
@@ -30,7 +30,7 @@
 	 * Environment Variables
 	 * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
 	 * Note: Use secrets to store sensitive data.
-	 * https://developers.cloudflare.com/workers/configuration/secrets/
+	 * https://developers.cloudflare.com/workers/wrangler/secrets/
 	 */
 	// "vars": {  "MY_VARIABLE": "production_value" }
 	/**
@@ -39,8 +39,8 @@
 	 */
 	// "assets": {  "directory": "./public/",  "binding": "ASSETS" }
 	/**
-	 * Service Bindings (communicate between multiple Workers)
-	 * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
+	 * Service Bindings (communicate with other Workers)
+	 * https://developers.cloudflare.com/workers/runtime-apis/bindings/services/
 	 */
-	// "services": [  {   "binding": "MY_SERVICE",   "service": "my-service"  } ]
+	// "services": [ {   "binding": "MY_SERVICE",   "service": "my-service" } ]
 }

@@ -1,11 +1,76 @@
-	<section id="contacto" aria-labelledby="contact-title">
+---
+import '@styles/components/contact.css';
+import '@styles/components/light-styles/contact-light.css';
+---
+
+	<section id="contacto" class="contact-section" aria-labelledby="contact-title">
 	<h1 id="contact-title">
 		<button class="section-toggle" type="button" data-section-toggle aria-label="Contraer contacto" aria-expanded="true" aria-controls="contact-content">
 			<span class="online-dot" aria-hidden="true"></span>
 			<span>Contacto</span>
 		</button>
     </h1>
+
 	<div id="contact-content">
-		<p>Este es un ejemplo de contenido para contacto.</p>
+		<form class="contact-form" data-contact-form>
+
+			<div class="contact-field">
+				<label for="contact-email">Correo</label>
+				<input
+					id="contact-email"
+					name="email"
+					type="email"
+					inputmode="email"
+					autocomplete="email"
+					placeholder="email@example.com"
+					maxlength="254"
+					required
+				/>
+			</div>
+
+			<div class="contact-field">
+				<label for="contact-subject">Asunto</label>
+				<input
+					id="contact-subject"
+					name="subject"
+					type="text"
+					placeholder="¿Sobre qué quieres escribir?"
+					minlength="3"
+					maxlength="140"
+					required
+				/>
+			</div>
+
+			<div class="contact-field">
+				<label for="contact-message">Mensaje</label>
+				<textarea
+					id="contact-message"
+					name="message"
+					rows="6"
+					placeholder="Cuéntame tu necesidad, un proyecto, una duda…"
+					minlength="10"
+					maxlength="4000"
+					required
+				></textarea>
+			</div>
+
+			<div class="contact-honeypot" aria-hidden="true">
+				<label for="contact-botcheck">No dejes este campo vacío</label>
+				<input
+					id="contact-botcheck"
+					name="botcheck"
+					type="text"
+					tabindex="-1"
+					autocomplete="off"
+					data-contact-honeypot
+				/>
+			</div>
+
+			<p class="contact-status" data-contact-status role="status" aria-live="polite"></p>
+
+			<button class="contact-submit" type="submit" data-contact-submit>
+				<span data-contact-submit-label>Enviar mensaje</span>
+			</button>
+		</form>
 	</div>
 </section>

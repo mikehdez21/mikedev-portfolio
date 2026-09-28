@@ -1,5 +1,6 @@
 import { initPlurGrid } from './background/plur-grid';
 import { initRacers } from './background/racers';
+import { initContactForm } from './contact';
 import { initGalleries } from './gallery';
 import { initMenu } from './menu';
 import { initNavLight } from './navigation/nav-light';
@@ -14,3 +15,4 @@ initRacers();
 initNavLight();
 initSectionToggles();
 initGalleries();
+initContactForm();

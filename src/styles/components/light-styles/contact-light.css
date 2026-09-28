@@ -1,0 +1,51 @@
+:root[data-theme='light'] .contact-form {
+  background: rgb(255 255 255 / 0.6);
+  border-color: rgba(82 82 91 / 0.22);
+}
+
+:root[data-theme='light'] .contact-field label {
+  color: #b45309;
+}
+
+:root[data-theme='light'] .contact-field input,
+:root[data-theme='light'] .contact-field textarea {
+  background: rgb(255 255 255 / 0.9);
+  border-color: rgba(82 82 91 / 0.3);
+}
+
+:root[data-theme='light'] .contact-field input::placeholder,
+:root[data-theme='light'] .contact-field textarea::placeholder {
+  color: rgba(82 82 91 / 0.7);
+}
+
+:root[data-theme='light'] .contact-submit {
+  color: #ffffff;
+  background: #b45309;
+  border-color: #b45309;
+}
+
+:root[data-theme='light'] .contact-submit:hover {
+  background: #92400e;
+}
+
+:root[data-theme='light'] .contact-submit:focus-visible,
+:root[data-theme='light'] .contact-field input:focus-visible,
+:root[data-theme='light'] .contact-field textarea:focus-visible {
+  outline-color: #b45309;
+}
+
+:root[data-theme='light'] .contact-status {
+  color: #3f3f46;
+}
+
+:root[data-theme='light'] .contact-status[data-state='success'] {
+  color: #15803d;
+}
+
+:root[data-theme='light'] .contact-status[data-state='error'] {
+  color: #b91c1c;
+}
+
+:root[data-theme='light'] .contact-status[data-state='pending'] {
+  color: #b45309;
+}
