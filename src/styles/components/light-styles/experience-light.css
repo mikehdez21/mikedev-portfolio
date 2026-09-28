@@ -1,0 +1,15 @@
+:root[data-theme='light'] {
+  --home-muted: rgb(63 63 70 / 0.85);
+  --home-accent: #155e75;
+  --home-accent-gold: #fbbf24;
+}
+
+:root[data-theme='light'] .experience-date {
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.281);
+
+}
+
+:root[data-theme='light'] .experience-company {
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.281);
+
+}

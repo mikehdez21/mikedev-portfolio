@@ -1,0 +1,39 @@
+/* Light-theme overrides for the navbar. */
+:root[data-theme='light'] {
+  --home-accent: #155e75;
+}
+
+:root[data-theme='light'] .theme-moon {
+  display: none;
+}
+
+:root[data-theme='light'] .theme-sun {
+  display: block;
+}
+
+:root[data-theme='light'] .navMenu {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(82, 82, 91, 0.24);
+}
+
+:root[data-theme='light'] .navMenu > a,
+:root[data-theme='light'] .navMenu > a span,
+:root[data-theme='light'] .mode-toggle,
+:root[data-theme='light'] .language-toggle {
+  color: #27272a;
+  --nav-base-color: #27272a;
+}
+
+:root[data-theme='light'] .navMenu > ul a {
+  color: rgba(39, 39, 42, 0.72);
+  --nav-base-color: rgba(39, 39, 42, 0.72);
+}
+
+
+:root[data-theme='light'] .mode-toggle:hover {
+    color: var(--home-accent);
+}
+
+:root[data-theme='light'] .language-toggle:hover {
+    color: var(--home-accent);
+}

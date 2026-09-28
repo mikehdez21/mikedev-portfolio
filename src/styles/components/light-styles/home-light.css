@@ -1,0 +1,43 @@
+/* Home light-theme overrides live here, not in global-light.css. All rules below are scoped to :root[data-theme='light'] so they cannot match in dark mode or when data-theme is absent. */
+
+:root[data-theme='light'] {
+  --home-muted: rgb(63 63 70 / 0.85);
+  --home-accent: #155e75;
+  --home-accent-gold: #fbbf24;
+}
+
+:root[data-theme='light'] #inicio > header h1 {
+  color: var(--foreground);
+}
+
+:root[data-theme='light'] #inicio > header .second-word {
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.548);
+}
+
+:root[data-theme='light'] #inicio > header .third-word {
+  border-color: rgb(21 94 117 / 85%);
+  text-shadow: 0 0 1rem rgb(21 94 117 / 20%);
+  box-shadow: inset 0 0 1rem rgb(21 94 117 / 8%);
+}
+
+:root[data-theme='light'] #inicio > header h4 {
+  color: var(--home-muted);
+}
+
+:root[data-theme='light'] .home-link-primary {
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.281);
+
+}
+
+:root[data-theme='light'] .home-link:hover {
+  border-color: var(--home-accent);
+  background-color: rgb(21 94 117 / 10%);
+  color: var(--home-accent);
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.281);
+}
+
+:root[data-theme='light'] .home-link:focus-visible {
+  outline-color: var(--home-accent-gold);
+}
+
+

@@ -6,6 +6,7 @@
   --footer-border: rgba(82, 82, 91, 0.22);
   --footer-text: rgba(63, 63, 70, 0.65);
   --footer-icon: rgba(63, 63, 70, 0.75);
+  --home-accent: #155e75;
 }
 
 :root[data-theme='light'] .tech-background {
@@ -21,49 +22,13 @@
   --plur-color: rgba(63, 63, 70, 0.16);
 }
 
-:root[data-theme='light'] .theme-moon {
-  display: none;
-}
-
-:root[data-theme='light'] .theme-sun {
-  display: block;
-}
-
-:root[data-theme='light'] .navMenu {
-  background: rgba(255, 255, 255, 0.72);
-  border-color: rgba(82, 82, 91, 0.24);
-}
-
-:root[data-theme='light'] .navMenu > a,
-:root[data-theme='light'] .navMenu > a span,
-:root[data-theme='light'] .mode-toggle,
-:root[data-theme='light'] .language-toggle {
-  color: #27272a;
-  --nav-base-color: #27272a;
-}
-
-:root[data-theme='light'] .navMenu > ul a {
-  color: rgba(39, 39, 42, 0.72);
-  --nav-base-color: rgba(39, 39, 42, 0.72);
-}
-
-:root[data-theme='light'] .navMenu > ul {
-  background: rgba(255, 255, 255, 0.96);
-  border-color: rgba(82, 82, 91, 0.22);
-}
-
-:root[data-theme='light'] .navMenu > a:hover,
-:root[data-theme='light'] .navMenu > ul a:hover,
-:root[data-theme='light'] .mode-toggle:hover,
-:root[data-theme='light'] .language-toggle:hover {
-  color: #18181b;
-}
-
-:root[data-theme='light'] .terminal-icon {
-  color: #27272a;
-}
-
 :root[data-theme='light'] main {
   background: rgba(255, 255, 255, 0.68);
   border-color: rgba(82, 82, 91, 0.2);
+}
+
+:root[data-theme='light'] a:hover {
+  border-color: var(--home-accent);
+  color: var(--home-accent);
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.281);
 }
