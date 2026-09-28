@@ -1,0 +1,117 @@
+---
+// Datos de Agenda Citas.
+//
+// La carpeta `public/images/projects/agenda-citas/` está vacía, así que `images`
+// es un arreglo vacío y la tarjeta no renderiza ninguna caja de medios.
+// Para activar la galería automáticamente: deposita los WebP en esa carpeta
+// y agrega una entrada `{ src, alt }` por archivo a este arreglo.
+// Los enlaces "#" son intencionales: no navegan a ningún sitio hasta que pongas las URLs reales.
+interface ProjectImage {
+	src: string;
+	alt: string;
+}
+
+interface Project {
+	title: string;
+	images: ProjectImage[];
+	technologies: string[];
+	description: string;
+	githubUrl: string;
+	demoUrl: string;
+}
+
+const project: Project = {
+	title: 'Agenda Citas',
+	images: [],
+	technologies: ['Astro', 'TypeScript', 'CSS'], // placeholder: reemplaza con las tecnologías reales
+	description:
+		'Descripción breve de Agenda Citas. Reemplaza este texto con el resumen real del proyecto.',
+	githubUrl: '#', // placeholder: URL real del repositorio en GitHub
+	demoUrl: '#', // placeholder: URL real de la demo en vivo
+};
+---
+
+<li>
+	<article class="project-card">
+		{project.images.length > 0 && (
+			<div class="project-card-media-wrap">
+				<div
+					class="project-card-media"
+					data-gallery={project.images.length > 1 ? '' : undefined}
+					role={project.images.length > 1 ? 'group' : undefined}
+					tabindex={project.images.length > 1 ? 0 : undefined}
+					aria-label={project.images.length > 1 ? `Galería de ${project.images.length} capturas de ${project.title}` : undefined}
+				>
+					{project.images.map((image) => (
+						<div class="project-card-slide">
+							<img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+						</div>
+					))}
+				</div>
+				{project.images.length > 1 && (
+					<>
+						<span class="project-card-counter" data-gallery-counter aria-hidden="true">1/{project.images.length}</span>
+						<button
+							type="button"
+							class="project-card-expand"
+							data-gallery-expand
+							aria-label={`Ver ${project.title} en grande`}
+						>
+							<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+								<path d="M8 3H5a2 2 0 0 0-2 2v3" />
+								<path d="M16 3h3a2 2 0 0 1 2 2v3" />
+								<path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+								<path d="M8 21H5a2 2 0 0 1-2-2v-3" />
+							</svg>
+						</button>
+						<button
+							type="button"
+							class="project-card-arrow"
+							data-gallery-prev
+							aria-label={`Imagen anterior de ${project.title}`}
+						>
+							<span aria-hidden="true">←</span>
+						</button>
+						<button
+							type="button"
+							class="project-card-arrow"
+							data-gallery-next
+							aria-label={`Imagen siguiente de ${project.title}`}
+						>
+							<span aria-hidden="true">→</span>
+						</button>
+					</>
+				)}
+			</div>
+		)}
+		<div class="project-card-body">
+			<h3 class="project-card-title">{project.title}</h3>
+			<ul class="project-card-tech">
+				{project.technologies.map((tech) => (
+					<li class="project-card-tag">{tech}</li>
+				))}
+			</ul>
+			<p class="project-card-description">{project.description}</p>
+			<div class="project-card-actions">
+				<a
+					class="project-link"
+					href={project.githubUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label={`Ver el código de ${project.title} en GitHub`}
+				>
+					Código
+				</a>
+				<a
+					class="project-link"
+					href={project.demoUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label={`Ver la demo en vivo de ${project.title}`}
+				>
+					Demo
+				</a>
+			</div>
+		</div>
+	</article>
+</li>

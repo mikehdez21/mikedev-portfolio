@@ -1,5 +1,6 @@
 import { initPlurGrid } from './background/plur-grid';
 import { initRacers } from './background/racers';
+import { initGalleries } from './gallery';
 import { initMenu } from './menu';
 import { initNavLight } from './navigation/nav-light';
 import { initTheme } from './theme';
@@ -12,3 +13,4 @@ initMenu();
 initRacers();
 initNavLight();
 initSectionToggles();
+initGalleries();

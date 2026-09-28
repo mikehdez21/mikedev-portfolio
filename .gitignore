@@ -3,6 +3,9 @@ dist/
 # generated types
 .astro/
 
+# SSD
+.opencode
+
 # dependencies
 node_modules/
 
