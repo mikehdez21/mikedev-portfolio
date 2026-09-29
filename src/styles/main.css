@@ -15,6 +15,10 @@ main > section {
   scroll-margin-top: 5.5rem;
 }
 
+main > * + * {
+  margin-top: var(--section-gap);
+}
+
 .grid-racers {
   position: absolute;
   inset: 0;
@@ -85,7 +89,17 @@ main > section {
   }
 }
 
+@media (max-width: 768px) {
+  :root {
+    --section-gap: 2.5rem;
+  }
+}
+
 @media (max-width: 480px) {
+  :root {
+    --section-gap: 2rem;
+  }
+
   main {
     padding: 0.75rem;
   }
