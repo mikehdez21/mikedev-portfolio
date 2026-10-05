@@ -4,7 +4,7 @@ language: es
 order: 1
 title: AdminCare
 description: >-
-  AdminCare comenzó como un sistema para almacén general y control de activos, pero el desarrollo fue ampliando su alcance hasta convertirlo en una base tipo ERP pensada para crecer por microsistemas. Hoy sigue cubriendo almacén y activos, etiquetado de instrumental de CEYE, helpdesk e intranet hospitalaria.
+  AdminCare comenzó como un sistema para almacén general y control de activos, pero el desarrollo fue ampliando su alcance hasta convertirlo en una base tipo ERP pensada para crecer por microsistemas. Hoy sigue cubriendo almacén y activos, etiquetado de instrumental de CEYE, helpdesk e intranet hospitalaria. El proyecto real se desarrolló e implementó en un servidor on-premise del Hospital San Serafín y en red local, por lo que su repositorio es privado; la demo pública es una copia sin datos reales y con funcionalidades similares.
 technologies: ['React', 'TypeScript', 'PHP-Laravel', 'PostgreSQL (SQLite DEMO)']
 githubUrl: https://github.com/mikehdez21/AdminCare
 demoUrl: https://admincare-demo.onrender.com/login
