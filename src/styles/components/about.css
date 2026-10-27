@@ -1,24 +1,32 @@
-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.6rem;
-
-    h4{
-        font-size: 0.8rem;
-        color: var(--footer-text);
-        margin: 0;
-
-    }
+#acerca header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
 }
 
-
-h1{
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
+#acerca header h4 {
+  margin: 0;
+  color: var(--footer-text);
+  font-size: 0.8rem;
 }
 
-p{
-    text-align: justify;
+#acerca h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+#about-content p {
+  margin: 0;
+  line-height: 1.4;
+  text-align: left;
+  text-wrap: pretty;
+}
+
+@media (max-width: 700px) {
+  #about-content p {
+    line-height: 1.4;
+    text-align: center;
+  }
 }

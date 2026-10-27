@@ -46,19 +46,17 @@ const es: Dictionary = {
 		company: 'Hospital San Serafín',
 		role: 'Ingeniero en Desarrollo de Sistemas, Soporte e Infraestructura',
 		summary:
-			'Diseñé e implementé soluciones internas para automatizar procesos, mejorar la trazabilidad y aumentar la eficiencia operativa, incluyendo:',
-		implementationsIntro: 'Implementaciones internas:',
+			'Diseñé e implementé "HSSAdminCare", una plataforma administrativa interna tipo ERP que consolida múltiples sistemas y servicios administrativos en una aplicación de página única (SPA) usando React, TypeScript, PHP/Laravel, PostgreSQL con esquemas múltiples y gestión on-premise sobre Ubuntu.',
+		implementationsIntro: 'La plataforma incluye:',
 		implementations: [
-			'Sistema de gestión de inventario de activos fijos para el área de Almacén General, pasando de un uso en excel -> sistema legacy -> a mi sistema web moderno. Administra toda la trazabilidad de los activos, desde su adquisición hasta su asignación final, permitiendo saber su responsable y ubicación exacta con su etiqueta QR, impresa con impresora Zebra.',
-			'Plataforma Helpdesk con flujo QR, Forms, Power Apps y Power Automate, más dashboards en Power BI, que eliminó los registros manuales de las incidencias del Departamento de Sistemas.',
-			'Sistema de agendas de citas para el área de Consulta Externa.',
-			'Sistema de emisión de etiquetas para el instrumental del departamento de CEYE.',
+			'Módulo de Inventario de Activos Fijos: Gestión de proveedores, facturas, activos fijos, etiquetas QR impresas en impresoras Zebra, movimientos de activos, responsivas de activos, dashboards e inventarios escaneados.',
+			'Módulo de Helpdesk: Ciclo de vida de tickets con categorías, notificación por email, prioridades, SLAs, asignación de múltiples técnicos, seguimiento de incidencias de proveedores externos y reportes en Power BI para gerentes.',
+			'Módulo de Administración y RBAC: Catálogos de usuarios, empleados, roles, departamentos, ubicaciones y permisos granulares.',
+			'Sistema de Agendado de Citas: Consulta externa e Imagen.',
+			'Etiquetado de Instrumental Quirúrgico CEYE: Plantillas e impresión de etiquetas con impresora Zebra.',
 		],
 		bullets: [
-			'Análisis de requerimientos junto con usuarios clave y stakeholders para abstraer necesidades de negocio en soluciones funcionales, entregando MVPs y ajustes iterativos hasta su adopción.',
-			'Administración y despliegue de servidores Ubuntu con Apache, PostgreSQL y configuración de DNS para servir y mantener las aplicaciones y servicios internos que desarrollé.',
-			'Reportes personalizados en Crystal Reports y consultas SQL a la base de datos del ERP y HIS principal para apoyar auditorías, dirección y áreas operativas.',
-			'Reducí costos de licencias en un 60% mediante análisis técnico, negociación y migración a soluciones autogestionadas, incluyendo la implementación de Veeam Backup & Replication.',
+			'Otras actividades: Generé reportes en Crystal Reports y análisis SQL; reduje en 60% los costos de licencias de mantenimiento mediante análisis técnico, renegociación y migración a soluciones autogestionadas, incluida la implementación de Veeam Backup & Replication para alta disponibilidad y recuperación ante desastres.',
 		],
 	},
 

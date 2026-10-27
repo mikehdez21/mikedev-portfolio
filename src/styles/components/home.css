@@ -43,7 +43,7 @@
     font-size: clamp(2.25rem, 8vw, 6.25rem);
     font-weight: 800;
     letter-spacing: -0.075em;
-    line-height: 0.94;
+    line-height: 1;
     text-wrap: balance;
     overflow-wrap: break-word;
 }
@@ -99,7 +99,7 @@
 .home-content{
     padding: 0 10rem;
     font-size: 1.2rem;
-    
+
     p{
         text-align: center;
     }

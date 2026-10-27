@@ -94,7 +94,7 @@
 .experience-summary {
   margin: 1.25rem 0 1rem;
   color: var(--foreground);
-  line-height: 1.7;
+  line-height: 1.4;
 }
 
 .experience-content ul {
@@ -110,7 +110,7 @@
   padding-left: 1rem;
   color: var(--muted);
   font-size: 0.9rem;
-  line-height: 1.6;
+  line-height: 1.4;
 }
 
 .experience-content li::after {
