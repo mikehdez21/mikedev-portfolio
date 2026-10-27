@@ -5,12 +5,40 @@ interface Props {
 	path: string;
 	index: number;
 	params?: Record<string, string | number>;
+	boldLead?: boolean;
 }
 
-const { path, index, params } = Astro.props;
+const { path, index, params, boldLead = false } = Astro.props;
 const en = tList(path, params, DEFAULT_LOCALE)[index] ?? '';
 const es = tList(path, params, 'es')[index] ?? '';
+
+function splitLead(value: string): { lead: string | null; rest: string } {
+	const colon = value.indexOf(':');
+	if (colon === -1) return { lead: null, rest: value };
+	return { lead: value.slice(0, colon + 1), rest: value.slice(colon + 1) };
+}
+
+const enParts = splitLead(en);
+const esParts = splitLead(es);
 ---
 
-<span data-lang={DEFAULT_LOCALE} data-i18n-path={path} data-i18n-index={index}>{en}</span>
-<span data-lang="es" data-i18n-path={path} data-i18n-index={index} hidden>{es}</span>
+<span data-lang={DEFAULT_LOCALE} data-i18n-path={path} data-i18n-index={index}>
+	{boldLead && enParts.lead !== null ? (
+		<>
+			<strong>{enParts.lead}</strong>
+			{enParts.rest}
+		</>
+	) : (
+		en
+	)}
+</span>
+<span data-lang="es" data-i18n-path={path} data-i18n-index={index} hidden>
+	{boldLead && esParts.lead !== null ? (
+		<>
+			<strong>{esParts.lead}</strong>
+			{esParts.rest}
+		</>
+	) : (
+		es
+	)}
+</span>

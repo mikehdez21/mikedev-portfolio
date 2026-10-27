@@ -13,3 +13,11 @@
     -webkit-text-stroke: 1px rgba(0, 0, 0, 0.281);
 
 }
+
+:root[data-theme='light'] .experience-content strong {
+  color: #000;
+}
+
+:root[data-theme='light'] .experience-content li > span[data-i18n-path] {
+  color: #595959;
+}

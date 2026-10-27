@@ -31,15 +31,15 @@ import { tList } from '@/i18n';
 				<p class="experience-summary"><Text path="experience.summary" /></p>
 				<ul>
 					<li>
-						<Text path="experience.implementationsIntro" />
+						<strong><Text path="experience.implementationsIntro" /></strong>
 						<ul class="experience-sublist">
 							{tList('experience.implementations', undefined, 'en').map((_, index) => (
-								<li><ListItem path="experience.implementations" index={index} /></li>
+								<li><ListItem path="experience.implementations" index={index} boldLead /></li>
 							))}
 						</ul>
 					</li>
 					{tList('experience.bullets', undefined, 'en').map((_, index) => (
-						<li><ListItem path="experience.bullets" index={index} /></li>
+						<li><ListItem path="experience.bullets" index={index} boldLead /></li>
 					))}
 				</ul>
 			</section>

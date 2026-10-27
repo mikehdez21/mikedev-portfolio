@@ -140,6 +140,10 @@
   background: rgb(251 191 36 / 75%);
 }
 
+.experience-content strong {
+  color: #fff;
+}
+
 @media (max-width: 700px) {
   .experience-section {
     padding: 2.5rem 0 3rem;

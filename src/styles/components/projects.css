@@ -308,6 +308,10 @@
   overflow-wrap: break-word;
 }
 
+:root[data-theme='light'] .project-card-description {
+  color: #000;
+}
+
 .project-card-actions {
   display: flex;
   flex-wrap: wrap;

@@ -91,7 +91,7 @@ const groups: SkillGroup[] = [
 		title: groupTitles.frontend,
 		skills: [
 			{ name: 'React', body: brand(siReact) },
-			{ name: 'Next.js', body: brandOnDark(siNextdotjs) },
+			{ name: 'Next.js', body: brandOnDark(siNextdotjs), tone: 'mono' },
 			{ name: 'Astro', body: brand(siAstro) },
 			{ name: 'JavaScript', body: brand(siJavascript) },
 			{ name: 'TypeScript', body: brand(siTypescript) },
@@ -110,10 +110,10 @@ const groups: SkillGroup[] = [
 			{ name: 'Laravel', body: brand(siLaravel) },
 			{ name: 'Node.js', body: brand(siNodedotjs) },
 			{ name: 'NestJS', body: brand(siNestjs) },
-			{ name: 'Express', body: brandOnDark(siExpress) },
+			{ name: 'Express', body: brandOnDark(siExpress), tone: 'mono' },
 			{ name: 'Zod', body: brand(siZod) },
 			{ name: 'APIs RESTful', body: outline('M3.5 8.4h13.2l-3.4-3.4M20.5 15.6H7.3l3.4 3.4', '#f472b6') },
-			{ name: 'WebSockets', body: brandOnDark(siSocketdotio) }
+			{ name: 'WebSockets', body: brandOnDark(siSocketdotio), tone: 'mono' }
 		]
 	},
 	{
@@ -130,7 +130,7 @@ const groups: SkillGroup[] = [
 		id: 'ai',
 		title: groupTitles.ai,
 		skills: [
-			{ name: 'OpenCode', body: brandOnDark(siOpencode) },
+			{ name: 'OpenCode', body: brandOnDark(siOpencode), tone: 'mono' },
 			{ name: 'OpenAI', body: openai, viewBox: '-6 0 268 260' },
 			{ name: 'Claude Code', body: brand(siClaudecode) },
 			{ name: 'Agentes de IA', labelPath: 'skills.labels.agents', body: outline('M12 2.8 13.7 7.4 18.3 9.1 13.7 10.8 12 15.4 10.3 10.8 5.7 9.1 10.3 7.4Zm6 9.4 1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1Z', '#a78bfa') },
