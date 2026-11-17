@@ -4,42 +4,58 @@ language: en
 order: 1
 title: AdminCare
 description: >-
-  AdminCare started as a general warehouse and asset control system, but the scope kept growing until it became an ERP-like foundation designed to grow through micro-systems. Today it still covers warehouse and assets, CEYE instrument labeling, helpdesk and the hospital intranet. The real project was developed and implemented on an on-premise server and local network at Hospital San Serafín, so this repository is private; the public demo is a copy without real data and with a similar feature set.
+  AdminCare started as a general warehouse and asset control system, but the
+  scope kept growing until it became an ERP-like foundation designed to grow
+  through micro-systems. Today it covers warehouse and fixed assets, invoices
+  and suppliers, QR labeling for CEYE instruments, users and roles, and a
+  helpdesk with support desks, tickets and a per-desk dashboard, plus the
+  hospital intranet. The real project was developed and implemented on an
+  on-premise server and local network at Hospital San Serafín, so this
+  repository is private; the public demo runs on SQLite with resettable
+  synthetic data.
 technologies: ['React', 'TypeScript', 'PHP-Laravel', 'PostgreSQL (SQLite DEMO)']
 githubUrl: https://github.com/mikehdez21/AdminCare
 demoUrl: https://admincare-demo.onrender.com/login
 visible: true
 images:
   - src: /images/projects/admincare/01-Login.webp
-    alt: AdminCare login screen
+    alt: AdminCare login screen with demo credentials
   - src: /images/projects/admincare/02-Home-AlmacenGeneral.webp
-    alt: AdminCare general warehouse home page
-  - src: /images/projects/admincare/03-Facturas-AlmacenGeneral.webp
+    alt: General warehouse home with metrics and latest assets
+  - src: /images/projects/admincare/03-Facturas.webp
     alt: General warehouse invoices list in AdminCare
-  - src: /images/projects/admincare/04-Filters-AFs.webp
-    alt: Fixed asset search filters in AdminCare
-  - src: /images/projects/admincare/05-Showing-AFs.webp
-    alt: Fixed assets list in AdminCare
+  - src: /images/projects/admincare/04-Filtros-AF.webp
+    alt: Fixed asset filters by department, employee and location
+  - src: /images/projects/admincare/05-Activos-Fijos.webp
+    alt: Fixed assets table with search and pagination
   - src: /images/projects/admincare/06-Movimientos-AF.webp
-    alt: Movement history of a fixed asset in AdminCare
-  - src: /images/projects/admincare/07-Etiquetas-AF.webp
-    alt: Labels attached to a fixed asset in AdminCare
-  - src: /images/projects/admincare/08-ShowingEtiqueta-AF.webp
-    alt: Label details of a fixed asset in AdminCare
-  - src: /images/projects/admincare/09-InfoQR-AF.webp
-    alt: QR code of a fixed asset in AdminCare
-  - src: /images/projects/admincare/10-Suppliers-AF.webp
-    alt: Fixed asset suppliers list in AdminCare
-  - src: /images/projects/admincare/11-AdminHome.webp
-    alt: AdminCare administration panel
-  - src: /images/projects/admincare/12-Users.webp
+    alt: Asset movement options in AdminCare
+  - src: /images/projects/admincare/07-Etiquetas.webp
+    alt: Label printing options
+  - src: /images/projects/admincare/08-Etiqueta-QR.webp
+    alt: Label preview with the QR code of a fixed asset
+  - src: /images/projects/admincare/09-Proveedores.webp
+    alt: Suppliers list in AdminCare
+  - src: /images/projects/admincare/10-Usuarios.webp
     alt: User management in AdminCare
-  - src: /images/projects/admincare/13-Employeers.webp
+  - src: /images/projects/admincare/11-Empleados.webp
     alt: Employee management in AdminCare
-  - src: /images/projects/admincare/14-Departments.webp
+  - src: /images/projects/admincare/12-Departamentos.webp
     alt: Department management in AdminCare
-  - src: /images/projects/admincare/15-Locations.webp
+  - src: /images/projects/admincare/13-Ubicaciones.webp
     alt: Location management in AdminCare
-  - src: /images/projects/admincare/16-RBAC.webp
-    alt: Role and permission management (RBAC) in AdminCare
+  - src: /images/projects/admincare/14-Roles.webp
+    alt: Role and permission management in AdminCare
+  - src: /images/projects/admincare/15-AdminDashboard.webp
+    alt: Admin dashboard with employee, user and location metrics
+  - src: /images/projects/admincare/16-Helpdesk-Nuevo-Ticket.webp
+    alt: Form for creating a new helpdesk ticket
+  - src: /images/projects/admincare/17-Helpdesk-Dashboard.webp
+    alt: Helpdesk dashboard by support desk
+  - src: /images/projects/admincare/18-Helpdesk-Tickets.webp
+    alt: Helpdesk ticket list with desk and priority filters
+  - src: /images/projects/admincare/19-Helpdesk-Ticket-Detalle.webp
+    alt: Ticket detail with actions, updates and history
+  - src: /images/projects/admincare/20-Helpdesk-Configuracion.webp
+    alt: Helpdesk settings for classifications, SLA, statuses and providers
 ---
