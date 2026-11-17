@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { project, language } = Astro.props;
-const { title, description, technologies, images, githubUrl, demoUrl } = project.data;
+const { title, description, technologies, images, githubUrl, demoUrl, visitUrl } = project.data;
 const isHidden = language !== DEFAULT_LOCALE;
 ---
 
@@ -114,6 +114,19 @@ const isHidden = language !== DEFAULT_LOCALE;
 						data-i18n-aria-label-params={`title:${title}`}
 					>
 						<Text path="projects.demo" />
+					</a>
+				)}
+				{visitUrl && (
+					<a
+						class="project-link"
+						href={visitUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label={`Open the ${title} site`}
+						data-i18n-aria-label="projects.viewVisit"
+						data-i18n-aria-label-params={`title:${title}`}
+					>
+						<Text path="projects.visit" />
 					</a>
 				)}
 			</div>

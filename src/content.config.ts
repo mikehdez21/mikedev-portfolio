@@ -31,8 +31,9 @@ const projects = defineCollection({
 			)
 			.default([]),
 		githubUrl: z.string(),
-		// Opcional: hay proyectos publicados sin sitio en vivo.
+		// Opcionales: `demoUrl` es un demo del sistema, `visitUrl` el sitio real.
 		demoUrl: z.string().optional(),
+		visitUrl: z.string().optional(),
 		// `visible: false` deja la entrada en la collection sin renderizarla: útil para
 		// proyectos que aún no tienen contenido ni enlaces reales.
 		visible: z.boolean().default(true),
