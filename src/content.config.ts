@@ -1,9 +1,9 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-// Un proyecto tiene un archivo por idioma:
-//   src/content/projects/admincare.en.md
-//   src/content/projects/admincare.es.md
+// Un proyecto tiene un archivo por idioma dentro de su carpeta:
+//   src/content/projects/admincare/admincare.en.md
+//   src/content/projects/admincare/admincare.es.md
 //
 // `generateId` conserva el nombre completo (menos `.md`) para que el id sea único por
 // idioma; si se deja el default, Astro deriva el slug de la carpeta y descarta una de
@@ -31,7 +31,8 @@ const projects = defineCollection({
 			)
 			.default([]),
 		githubUrl: z.string(),
-		demoUrl: z.string(),
+		// Opcional: hay proyectos publicados sin sitio en vivo.
+		demoUrl: z.string().optional(),
 		// `visible: false` deja la entrada en la collection sin renderizarla: útil para
 		// proyectos que aún no tienen contenido ni enlaces reales.
 		visible: z.boolean().default(true),

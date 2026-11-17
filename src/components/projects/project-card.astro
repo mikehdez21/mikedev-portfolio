@@ -103,17 +103,19 @@ const isHidden = language !== DEFAULT_LOCALE;
 				>
 					<Text path="projects.code" />
 				</a>
-				<a
-					class="project-link"
-					href={demoUrl}
-					target="_blank"
-					rel="noopener noreferrer"
-					aria-label={`View the live ${title} demo`}
-					data-i18n-aria-label="projects.viewDemo"
-					data-i18n-aria-label-params={`title:${title}`}
-				>
-					<Text path="projects.demo" />
-				</a>
+				{demoUrl && (
+					<a
+						class="project-link"
+						href={demoUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label={`View the live ${title} demo`}
+						data-i18n-aria-label="projects.viewDemo"
+						data-i18n-aria-label-params={`title:${title}`}
+					>
+						<Text path="projects.demo" />
+					</a>
+				)}
 			</div>
 		</div>
 	</article>
